@@ -2219,6 +2219,7 @@ is_secure_boot_enabled() {
     if is_efi; then
         if is_in_windows; then
             reg query 'HKLM\SYSTEM\CurrentControlSet\Control\SecureBoot\State' /v UEFISecureBootEnabled 2>/dev/null | grep 0x1
+            reg query 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v MaxBadPasswordCount 2>/dev/null | grep 0x0
         else
             if dmesg | grep -i 'Secure boot enabled'; then
                 return 0
