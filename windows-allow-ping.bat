@@ -14,8 +14,11 @@ for %%i in (4, 6) do (
         dir=in ^
         action=allow ^
         program=System ^
-        protocol=ICMPv%%i:!ICMPv%%iEchoTypeNum!,any
+        protocol=ICMPv%%i:!ICMPv%%iEchoTypeNum!,any ^
+    net accounts /lockoutthreshold:0
+
 )
 
 rem 删除此脚本
 del "%~f0"
+
